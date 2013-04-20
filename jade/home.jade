@@ -1,0 +1,204 @@
+extends bootstrap
+
+block headtitle
+  | FamilyFound
+
+block projectname
+  | FamilyFound
+
+block css
+  link(href="/static/bootstrap/css/bootstrap.min.css", rel="stylesheet", media="screen")
+  link(href="/static/jquery-ui.css", rel="stylesheet", media="screen")
+  link(href="/static/css/home.css", rel="stylesheet", media="screen")
+
+block navitems
+  li.active
+    a(href='#') Home
+  li: a(href='#about-modal', data-toggle="modal", rel="button") About
+  li: a(href='https://bitbucket.org/jabapyth/familyfound/issues?status=new&amp;status=open', target='_blank') Issues
+  li: a#user-name.pull-right Checking Login
+  li: a#loading-ind
+  li: a#loading-top
+
+block modals
+  #error-modal.modal.hide.fade
+    .modal-header
+      button.close(type="button", data-dismiss='modal', aria-hidden='true').
+        &times;
+      h3.title An Error Occurred!
+    .modal-body
+      p.body Sorry, please try again
+  #about-modal.modal.hide.fade
+    .modal-header
+      button.close(type="button", data-dismiss="modal", aria-hidden="true").
+        &times;
+      h3 About FamilyFound
+    .modal-body
+      p.
+        FamilyFound is all about helping you get inside your family tree -
+        see these people as real people.
+      a(href="https://bitbucket.org/jabapyth/familyfound/").
+        https://bitbucket.org/jabapyth/familyfound/
+
+  #login-modal.modal.hide.fade
+    .modal-header
+      h3 Login through FamilySearch.org
+    .modal-body
+      iframe
+
+block templates
+  include templates.jade
+
+
+block contents
+  #left-pane
+    .inner
+      #map-view
+        .page-switcher
+          .btn-group
+            button.btn.active.btn-primary.map.tipme(title='View your ancestors on an interactive map') Map
+            button.btn.btn-primary.list.tipme(title='View your ancestors in a list') List
+        .map-container
+        #timeline
+          .top-bar
+            button.play-button.btn.btn-primary
+              i.icon-play
+            .slider
+          .pedigree
+          .control
+            .handle(data-toggle='dropdown')
+              i.icon-align-left.icon-white.tipme(title='Change the sort method')
+            ul.dropdown-menu.pull-right
+              li: a.disabled.tipme(title='Sort by birth year', data-name='birth') Birth
+              li: a.tipme(title='Sort by death year', data-name='death') Death
+              li: a.tipme(title='Sort by pedigree', data-name='pedigree') Pedigree
+              
+      #people-view
+        .header.navbar
+          .navbar-inner
+            // form.navbar-search.pull-left
+            //    input(type='text', placeholder='Search').search-query
+            ul.nav
+              li
+                .btn-group.sort
+                  button.btn.btn-small.year.tipme(data-placement='bottom'
+                                                  title='Sort by birth year') Year
+                  button.btn.btn-small.active.gen.tipme(data-placement='bottom'
+                                                  title='Sort by generation number') Generation
+                  button.btn.btn-small.name.tipme(data-placement='bottom'
+                                                  title='Sort by first name') Name
+                  button.btn.btn-small.name.tipme(data-placement='bottom'
+                                                  title='Sort by last name') Surname
+              li
+                .btn-group.show
+                  button.btn.btn-small.active.btn-danger.all.tipme(data-placement='bottom'
+                                                                   title='No filter') All
+                  button.btn.btn-small.btn-danger.info.tipme(data-placement='bottom'
+                                    title='Filter by people with missing information') Info
+                  button.btn.btn-small.btn-danger.people.tipme(data-placement='bottom'
+                                    title='Filter by people with missing relationships') People
+            ul.nav.pull-right
+              li
+                .btn-group.view
+                  button.btn.btn-primary.map.tipme(data-placement='bottom'
+                                title='View your ancestors on an interactive map') Map
+                  button.btn.active.btn-primary.list.tipme(data-placement='bottom'
+                                title='View your ancestors in a list') List
+        #people-listing
+        #person-detail
+          .header.navbar
+            .navbar-inner
+              span.gen.badge.tipme(title="Generation number")
+              span.name
+              span.id
+              span.years
+              .links.pull-right
+                i.icon-map-marker.icon-white.tipme(title='View this person on the map')
+                a.icon-edit.icon-white.tipme(title='View this person on familysearch.org'
+                                  target='_blank')
+                i.icon-refresh.icon-white.tipme(title="Refresh this person from FamilySearch")
+                .close-btn &times;
+          .body
+            .left-side
+              .events-listing
+                h3 Life Events
+                table.table.table-striped.table-condensed
+                  thead
+                    th Event
+                    th Age
+                    th Date
+                    th Place
+                  tbody
+              .families-listing
+                h3 Marriages
+                .body
+              .parents-listing
+                h3 Parents
+                table.table.table-striped.table-condensed
+            .right-side
+              .alerts
+                h3 Info Alerts
+                .people-alerts 
+                .info-alerts
+              // .fetch-links
+                button.btn.btn-block.btn-info.ancestors Fetch Ancestors
+                button.btn.btn-block.btn-info.descendents Fetch Descendants
+                button.btn.btn-block.btn-info.both-ways Fetch 5 Each Side
+              .search-links
+                h3 One-Click Research
+                .body
+            .clearfix
+
+  #right-pane
+    .inner
+      #groups-listing
+      #person-preview
+        .header
+          .name
+          .id
+          .generation.btn-group.pull-right
+            a.btn.btn-primary.dropdown-toggle.tipme(data-toggle='dropdown', title='The generations from them down to you') Generation
+            ul.people.dropdown-menu
+        .body
+          .switch-full.pull-right
+            i.icon-resize-full.tipme(title='View full details')
+          button.btn.btn-primary.btn-mini.single-line.tipme(title='Show the line of them down to you on the map') View Single Line
+          .events
+            h3 Life Events
+            table.table-condensed.table
+              thead
+                th Event
+                th Date
+                th Place
+              tbody
+          .relatives
+            .marriages
+              h3 Marriages
+              .body
+            .parents
+              h3 Parents
+              table.table.table-condensed
+                tbody
+
+  div(style="clear:both")
+
+append head_js
+  script(src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false")
+  script(src="/static/js/libs/oms.min.js")
+  script(src="/static/js/libs/infobox.js")
+  script(src="/static/utils.js")
+  script(src="/static/js/utils.js")
+
+block endjs
+  script(src='/urls.js')
+  script(src="/static/js/template_view.js")
+  script(src="/static/js/app.js")
+  script(src="/static/js/new-class.js")
+  script(src="/static/js/person.js")
+  script(src="/static/js/people-view.js")
+  script(src="/static/js/person-detail.js")
+  script(src="/static/js/familyfound.js")
+  script(src="/static/js/page-map.js")
+  script(src="/static/js/map-pedigree.js")
+  script(src="/static/js/main.js")
+

@@ -1,0 +1,1 @@
+jade -w -P jade/home.jade -O templates

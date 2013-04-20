@@ -1,0 +1,17 @@
+---
+applications:
+  .:
+    name: familyfound
+    framework:
+      name: wsgi
+      info:
+        mem: 64M
+        description: Python WSGI Application
+        exec: 
+    infra: aws
+    url: ${name}.${target-base}
+    mem: 64M
+    instances: 1
+    services:
+      familyfound:
+        type: mongodb

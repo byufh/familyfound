@@ -1,0 +1,52 @@
+#!/usr/bin/env python
+from pbj import Builder, cmd, LOG
+from os.path import join, dirname, abspath
+import os
+
+build = Builder("FamilyFound")
+
+BASE = basename(abspath(__file__))
+
+@build.target
+def make_appfrog():
+    '''Make the appfrog repo'''
+    LOG.info('Creating the appfrog repo')
+    working = join(BASE, 'working')
+    out, err = cmd('hg clone {} appfrog'.format(BASE), cwd=working, shell=True)
+    LOG.info('created repo!')
+
+@build.target
+def make_heroku():
+    '''Make the heroku repo'''
+    LOG.info('Creating the heroku repo')
+    working = join(BASE, 'working')
+    out, err = cmd('git-hg clone {} heroku'.format(BASE), cwd=working, shell=True)
+    LOG.info('created repo!')
+
+@build.target
+def push_heroku():
+    '''Push to the production subrepos'''
+    LOG.info('Updating the repo')
+    out, err = cmd('git-hg pull', cwd=join(BASE, 'prod/heroku'), shell=True)
+    if not err:
+      out, err = cmd('git push heroku', cwd=join(BASE, 'prod/heroku'), shell=True)
+      if err:
+        LOG.error('Failed to update heroku')
+    if err:
+      LOG.error('Failed to update the heroku repo')
+
+@build.target
+def push_appfrog():
+    LOG.info('Updating the repo')
+    out, err = cmd('hg pull -u', cwd=join(BASE, 'prod/appfrog'), shell=True)
+    if not err:
+      out, err = cmd('af update familyfound',
+                     cwd=join(BASE, 'prod/appfrog'), shell=True)
+      if err:
+        LOG.error('Failed to update af')
+    else:
+      LOG.error('failed to update the appfrog repo')
+
+if __name__=='__main__':
+    build.run()
+

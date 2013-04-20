@@ -1,0 +1,24 @@
+
+<div id="page-signup" class="page span4 offset4">
+  <div class="title">Sign Up</div>
+  <div class="body">
+    <div class="form">
+      <form action="{% url ajax-profile-register %}">
+        <div class="error alert alert-error"></div>
+        <div>
+          <input type="text" placeholder="Real Name" class="real-name"/>
+        </div>
+        <div>
+          <input type="text" placeholder="Email Address" class="email"/>
+        </div>
+        <div>
+          <input type="password" placeholder="Password" class="password"/>
+        </div>
+        <div>
+          <input type="password" placeholder="Re-enter Password" class="repassword"/>
+        </div>
+        <button name="submit">Register</button>
+      </form><a href="#login" class="login-button btn pull-right">Login</a>
+    </div>
+  </div>
+</div>

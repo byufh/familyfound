@@ -1,0 +1,40 @@
+extends base
+
+block head_js
+  script(src="/static/js/libs/jquery-1.8.0.js")
+  script(src="/static/js/libs/jquery-ui.js")
+  script(src="/static/bootstrap/js/bootstrap.min.js")
+  script(src="/static/js/libs/lodash.js")
+  script(src="/static/backbone-min.js")
+
+block body
+  div.navbar.navbar-inverse#topnav
+    .navbar-inner
+      .container
+        a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        img.logo(src='/static/imgs/icon_20.png')
+        a.brand(href='#')
+          block projectname
+            | FamilyFound
+        .nav-collapse.collapse
+          ul.nav
+            block navitems
+              li.active
+                a(href='#') Home
+              li: a(href='#about-modal', data-toggle="modal", rel="button") About
+              li: a(href='https://bitbucket.org/jabapyth/familyfound/issues?status=new&amp;status=open', target='_blank') Issues
+  #modals
+    block modals
+
+  #templates
+    block templates
+
+  #body-contents.container-fluid
+    block contents
+
+  block endjs
+
+

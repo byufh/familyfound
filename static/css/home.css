@@ -1,0 +1,513 @@
+body img {
+  max-width: inherit; }
+
+#map-view {
+  display: none;
+  border: 1px solid; }
+  #map-view > .page-switcher {
+    z-index: 5;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: black;
+    border-radius: 5px; }
+  #map-view .map-container {
+    height: 400px; }
+  #map-view #timeline {
+    position: absolute;
+    top: 400px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #333; }
+    #map-view #timeline > .top-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background-color: #333; }
+      #map-view #timeline > .top-bar button.play-button {
+        position: absolute;
+        display: block;
+        top: 7px;
+        left: 5px;
+        width: 32px;
+        height: 27px;
+        text-align: center;
+        padding-left: 8px;
+        border-radius: 10px; }
+      #map-view #timeline > .top-bar > .slider {
+        position: absolute;
+        left: 55px;
+        top: 10px;
+        height: 10px;
+        right: 10px;
+        background-color: #444;
+        border-radius: 10px;
+        box-shadow: black 0px 0px 5px inset;
+        border: 1px solid #777; }
+        #map-view #timeline > .top-bar > .slider div.year-label {
+          color: white;
+          font-size: 10px;
+          width: 30px;
+          margin-left: -15px;
+          text-align: center;
+          position: absolute;
+          top: 15px; }
+        #map-view #timeline > .top-bar > .slider a {
+          outline: none;
+          width: 2em;
+          margin-left: -1em;
+          color: black;
+          text-decoration: none;
+          text-align: center; }
+          #map-view #timeline > .top-bar > .slider a:hover {
+            text-decoration: none; }
+          #map-view #timeline > .top-bar > .slider a span {
+            font-size: 10px;
+            position: relative;
+            top: -2px; }
+    #map-view #timeline .control {
+      position: absolute;
+      top: 50px;
+      right: 25px; }
+      #map-view #timeline .control > .handle {
+        cursor: pointer;
+        width: 16px;
+        height: 16px;
+        border-radius: 3px;
+        background-color: #000;
+        padding: 3px 2px 3px 4px; }
+      #map-view #timeline .control li {
+        cursor: pointer; }
+      #map-view #timeline .control li a.disabled {
+        color: #999;
+        cursor: default; }
+        #map-view #timeline .control li a.disabled:hover {
+          background-color: transparent; }
+    #map-view #timeline > .pedigree {
+      position: absolute;
+      top: 40px;
+      left: 55px;
+      bottom: 0;
+      right: 0;
+      overflow-y: auto; }
+      #map-view #timeline > .pedigree .person-line {
+        height: 5px;
+        position: relative; }
+        #map-view #timeline > .pedigree .person-line.showing .person {
+          background-color: white; }
+        #map-view #timeline > .pedigree .person-line > .person {
+          height: 5px;
+          padding: 0;
+          margin: 0;
+          cursor: pointer;
+          position: absolute;
+          top: 0;
+          background-color: #777; }
+          #map-view #timeline > .pedigree .person-line > .person.male {
+            background-color: #66a; }
+          #map-view #timeline > .pedigree .person-line > .person.female {
+            background-color: #a6a; }
+          #map-view #timeline > .pedigree .person-line > .person:hover {
+            background-color: white; }
+          #map-view #timeline > .pedigree .person-line > .person.no-death .death {
+            display: none; }
+          #map-view #timeline > .pedigree .person-line > .person.no-birth .birth {
+            display: none; }
+          #map-view #timeline > .pedigree .person-line > .person div {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 5px; }
+          #map-view #timeline > .pedigree .person-line > .person .birth {
+            left: 0;
+            background-color: #0af; }
+          #map-view #timeline > .pedigree .person-line > .person .death {
+            right: 0;
+            background-color: #a04; }
+          #map-view #timeline > .pedigree .person-line > .person .marriage {
+            background-color: #f8e;
+            margin-left: -2px; }
+
+#page-map {
+  display: none; }
+  #page-map > div.main {
+    float: left;
+    width: 70%;
+    height: 100%;
+    min-height: 400px;
+    box-sizing: border-box;
+    padding-left: 20px; }
+    #page-map > div.main > div.map_canvas {
+      height: 500px; }
+    #page-map > div.main > div.control-bar .navbar-inner {
+      padding-left: 0; }
+      #page-map > div.main > div.control-bar .navbar-inner .meta {
+        float: left;
+        width: 200px; }
+      #page-map > div.main > div.control-bar .navbar-inner div.time-slider {
+        margin-left: 200px;
+        padding-top: 14px; }
+  #page-map > div.right_bar {
+    float: right;
+    width: 29%;
+    box-sizing: border-box;
+    padding: 10px; }
+    #page-map > div.right_bar > div.info .child {
+      padding: 3px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      margin-bottom: 3px; }
+    #page-map > div.right_bar > div.info .events .event {
+      padding: 3px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      margin-bottom: 3px; }
+      #page-map > div.right_bar > div.info .events .event span {
+        font-size: 1.1em; }
+
+#right-pane > .inner > #person-preview {
+  display: none;
+  position: absolute;
+  top: 200px;
+  bottom: 0; }
+  #right-pane > .inner > #person-preview h3 {
+    margin-left: 5px; }
+  #right-pane > .inner > #person-preview .header {
+    height: 40px;
+    background-color: #444;
+    font-weight: bold;
+    color: white; }
+    #right-pane > .inner > #person-preview .header > div {
+      float: left; }
+    #right-pane > .inner > #person-preview .header .name {
+      font-size: 1.4em;
+      padding: 10px 5px 10px 10px; }
+    #right-pane > .inner > #person-preview .header .id {
+      color: #ddd;
+      font-size: .9em;
+      padding: 10px 5px; }
+    #right-pane > .inner > #person-preview .header .generation {
+      margin: 5px;
+      position: absolute;
+      right: 5px; }
+      #right-pane > .inner > #person-preview .header .generation ul.people a {
+        cursor: pointer; }
+  #right-pane > .inner > #person-preview > .body {
+    overflow-y: auto;
+    position: absolute;
+    top: 40px;
+    bottom: 0;
+    left: 0;
+    right: 0; }
+    #right-pane > .inner > #person-preview > .body button.single-line {
+      margin: 5px; }
+    #right-pane > .inner > #person-preview > .body .switch-full {
+      padding: 2px 3px 0;
+      border: 1px solid;
+      border-radius: 5px;
+      margin: 5px;
+      cursor: pointer; }
+      #right-pane > .inner > #person-preview > .body .switch-full:hover {
+        background-color: #e0f0ff; }
+    #right-pane > .inner > #person-preview > .body > .events > table {
+      margin: 0; }
+    #right-pane > .inner > #person-preview > .body > .relatives > .marriages .family {
+      padding: 5px;
+      margin: 5px;
+      border: 1px solid;
+      border-radius: 3px; }
+    #right-pane > .inner > #person-preview > .body > .relatives > .marriages .spouse {
+      cursor: pointer; }
+      #right-pane > .inner > #person-preview > .body > .relatives > .marriages .spouse:hover {
+        background-color: #ddd; }
+      #right-pane > .inner > #person-preview > .body > .relatives > .marriages .spouse .name {
+        font-weight: bold;
+        color: #555;
+        font-size: 1.2em; }
+      #right-pane > .inner > #person-preview > .body > .relatives > .marriages .spouse .id {
+        margin: 5px;
+        font-variant: small-caps;
+        font-size: 1em;
+        font-weight: bolder;
+        color: #999; }
+    #right-pane > .inner > #person-preview > .body > .relatives > .marriages .marriage .marriage_place {
+      margin: 10px; }
+    #right-pane > .inner > #person-preview > .body > .relatives > .marriages .children td {
+      cursor: pointer; }
+      #right-pane > .inner > #person-preview > .body > .relatives > .marriages .children td table {
+        margin: 0; }
+    #right-pane > .inner > #person-preview > .body > .relatives .parents table {
+      margin: 0; }
+      #right-pane > .inner > #person-preview > .body > .relatives .parents table td {
+        cursor: pointer; }
+
+#topnav img.logo {
+  float: left;
+  margin: 8px 10px 0 -10px; }
+
+[class^="icon-"], [class*=" icon-"] {
+  background-image: url("/static/bootstrap/img/glyphicons-halflings.png"); }
+
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 600px; }
+
+#body-contents {
+  position: absolute;
+  top: 60px;
+  bottom: 20px;
+  width: 1200px;
+  min-height: 600px;
+  left: 50%;
+  margin-left: -600px;
+  padding-left: 10px;
+  padding-right: 10px; }
+
+#user-name {
+  font-weight: bold;
+  color: #293; }
+
+#left-pane, #right-pane {
+  box-sizing: border-box;
+  padding: 10px;
+  height: 100%; }
+  #left-pane > .inner, #right-pane > .inner {
+    height: 100%;
+    position: relative; }
+    #left-pane > .inner > *, #right-pane > .inner > * {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0; }
+
+#left-pane {
+  float: left;
+  position: absolute;
+  left: 0;
+  right: 400px; }
+
+#right-pane {
+  float: right;
+  width: 400px; }
+  #right-pane > .inner {
+    border: 2px solid #444; }
+  #right-pane.map > .inner > #groups-listing {
+    bottom: 400px; }
+  #right-pane.map > .inner > #person-preview {
+    display: block; }
+
+#login-modal iframe {
+  border: none;
+  width: 100%;
+  height: 395px; }
+
+#groups-listing > div {
+  padding: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  font-weight: bold;
+  color: #333; }
+  #groups-listing > div.active {
+    background-color: #5bf;
+    color: white; }
+  #groups-listing > div.loading {
+    background-color: #eee;
+    color: #555;
+    font-style: italic;
+    background-image: url("/static/imgs/ajax-loader.gif");
+    background-repeat: no-repeat;
+    background-position: 100% center; }
+  #groups-listing > div i.icon-refresh {
+    cursor: pointer; }
+    #groups-listing > div i.icon-refresh:hover {
+      background-color: #777; }
+
+#people-view.view-detail #person-detail {
+  display: block; }
+#people-view.view-detail #people-listing {
+  bottom: 390px; }
+#people-view .header .navbar-inner {
+  padding: 5px; }
+#people-view #person-detail {
+  position: absolute;
+  bottom: -4px;
+  height: auto;
+  left: 0;
+  right: 0;
+  border: 2px solid #333;
+  box-sizing: border-box;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  display: none; }
+  #people-view #person-detail > div {
+    position: absolute; }
+  #people-view #person-detail > .header {
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 5px; }
+    #people-view #person-detail > .header > .navbar-inner {
+      min-height: auto;
+      padding: 11px; }
+      #people-view #person-detail > .header > .navbar-inner > * {
+        margin-right: 10px; }
+      #people-view #person-detail > .header > .navbar-inner > .gen {
+        font-size: 1.3em; }
+      #people-view #person-detail > .header > .navbar-inner > .name {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #777; }
+      #people-view #person-detail > .header > .navbar-inner > .id {
+        font-size: .8em;
+        color: #bbb; }
+      #people-view #person-detail > .header > .navbar-inner a.icon-edit, #people-view #person-detail > .header > .navbar-inner i.icon-refresh, #people-view #person-detail > .header > .navbar-inner i.icon-map-marker {
+        cursor: pointer;
+        border-radius: 3px; }
+        #people-view #person-detail > .header > .navbar-inner a.icon-edit:hover, #people-view #person-detail > .header > .navbar-inner i.icon-refresh:hover, #people-view #person-detail > .header > .navbar-inner i.icon-map-marker:hover {
+          background-color: #777; }
+      #people-view #person-detail > .header > .navbar-inner > .links {
+        float: right;
+        margin-right: 0; }
+        #people-view #person-detail > .header > .navbar-inner > .links > * {
+          margin-left: 5px; }
+      #people-view #person-detail > .header > .navbar-inner .close-btn {
+        display: inline-block;
+        cursor: pointer;
+        width: 18px;
+        text-align: center;
+        border: 1px solid;
+        border-radius: 4px;
+        height: 18px;
+        margin-right: 0; }
+        #people-view #person-detail > .header > .navbar-inner .close-btn:hover {
+          color: red; }
+  #people-view #person-detail > .body {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto; }
+    #people-view #person-detail > .body .clearfix {
+      clear: both; }
+    #people-view #person-detail > .body > .left-side {
+      width: 50%;
+      float: left; }
+      #people-view #person-detail > .body > .left-side h3 {
+        margin-left: 5px;
+        margin-bottom: 5px; }
+      #people-view #person-detail > .body > .left-side > .events-listing {
+        border: 1px solid #aaa;
+        margin: 5px;
+        padding: 5px; }
+        #people-view #person-detail > .body > .left-side > .events-listing table {
+          font-size: .8em; }
+      #people-view #person-detail > .body > .left-side > .parents-listing {
+        border: 1px solid #aaa;
+        margin: 5px;
+        padding: 5px; }
+        #people-view #person-detail > .body > .left-side > .parents-listing table tr {
+          cursor: pointer; }
+      #people-view #person-detail > .body > .left-side > .families-listing {
+        margin: 5px;
+        padding: 5px;
+        border: 1px solid #aaa; }
+        #people-view #person-detail > .body > .left-side > .families-listing > .body > .family {
+          border: 1px solid #aaa;
+          padding: 5px;
+          margin-bottom: 5px; }
+          #people-view #person-detail > .body > .left-side > .families-listing > .body > .family.missing-marriage-date .marriage_date {
+            background-color: lightred; }
+          #people-view #person-detail > .body > .left-side > .families-listing > .body > .family.missing-marriage-place .marriage_place {
+            background-color: lightred; }
+          #people-view #person-detail > .body > .left-side > .families-listing > .body > .family.missing-spouse .spouse {
+            background-color: lightred; }
+          #people-view #person-detail > .body > .left-side > .families-listing > .body > .family .spouse {
+            cursor: pointer; }
+            #people-view #person-detail > .body > .left-side > .families-listing > .body > .family .spouse:hover {
+              background-color: #f5f5f5; }
+            #people-view #person-detail > .body > .left-side > .families-listing > .body > .family .spouse .name {
+              font-weight: bold;
+              color: #777; }
+          #people-view #person-detail > .body > .left-side > .families-listing > .body > .family .spouse span, #people-view #person-detail > .body > .left-side > .families-listing > .body > .family .marriage span {
+            margin-right: 10px; }
+          #people-view #person-detail > .body > .left-side > .families-listing > .body > .family .spouse .id, #people-view #person-detail > .body > .left-side > .families-listing > .body > .family .marriage .id {
+            color: #aaa;
+            font-size: .8em; }
+          #people-view #person-detail > .body > .left-side > .families-listing > .body > .family .child {
+            cursor: pointer; }
+    #people-view #person-detail > .body > .right-side {
+      float: right;
+      width: 50%; }
+      #people-view #person-detail > .body > .right-side h3 {
+        margin-left: 5px;
+        margin-bottom: 5px; }
+      #people-view #person-detail > .body > .right-side > .alerts {
+        border: 1px solid #aaa;
+        margin: 5px;
+        padding: 5px; }
+        #people-view #person-detail > .body > .right-side > .alerts div.alert {
+          margin-bottom: 5px; }
+      #people-view #person-detail > .body > .right-side .search-links {
+        border: 1px solid #aaa;
+        margin: 5px;
+        padding: 5px; }
+        #people-view #person-detail > .body > .right-side .search-links a {
+          display: block;
+          margin: 5px 20px; }
+#people-view #people-listing {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  overflow: auto; }
+  #people-view #people-listing.filter-people > div.person {
+    display: none; }
+    #people-view #people-listing.filter-people > div.person.people-alert {
+      display: block; }
+  #people-view #people-listing.filter-info > div.person {
+    display: none; }
+    #people-view #people-listing.filter-info > div.person.info-alert {
+      display: block; }
+  #people-view #people-listing > div.person {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    height: 1em;
+    cursor: pointer; }
+    #people-view #people-listing > div.person .people-alerts, #people-view #people-listing > div.person .info-alerts {
+      display: none; }
+    #people-view #people-listing > div.person.people-alert .people-alerts {
+      display: block; }
+    #people-view #people-listing > div.person.info-alert .info-alerts {
+      display: block; }
+    #people-view #people-listing > div.person:hover {
+      background-color: #eef; }
+    #people-view #people-listing > div.person > * {
+      float: left;
+      margin-right: 10px; }
+    #people-view #people-listing > div.person > div.label {
+      border-radius: 8px; }
+    #people-view #people-listing > div.person > div.id {
+      font-size: .8em;
+      color: #aaa; }
+    #people-view #people-listing > div.person > div.links {
+      float: right; }
+    #people-view #people-listing > div.person > div.issues div {
+      background-color: #55a;
+      border-radius: 10px;
+      float: left; }
+
+#loading-ind {
+  background-image: url("/static/imgs/ajax-loader.gif");
+  background-repeat: no-repeat;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-position: center center; }

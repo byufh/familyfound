@@ -1,0 +1,134 @@
+
+#right-pane > .inner > #person-preview {
+  display: none;
+  position: absolute;
+  top: 200px;
+  bottom: 0;
+
+  h3 {
+    margin-left: 5px;
+  }
+
+  .header {
+    height: 40px;
+    background-color: #444;
+    font-weight: bold;
+    color: white;
+
+    > div {
+      float: left;
+    }
+  
+    .name {
+      font-size: 1.4em;
+      padding: 10px 5px 10px 10px;
+    }
+
+    .id {
+      color: #ddd;
+      font-size: .9em;
+      padding: 10px 5px;
+    }
+      
+    .generation {
+      margin: 5px;
+      position: absolute;
+      right: 5px;
+
+      ul.people {
+        a {
+          cursor: pointer;
+        }
+      }
+    }
+
+  }
+
+  > .body {
+    overflow-y: auto;
+    position: absolute;
+    top: 40px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    button.single-line {
+      margin: 5px;
+    }
+
+    .switch-full {
+      padding: 2px 3px 0;
+      border: 1px solid;
+      border-radius: 5px;
+      margin: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #e0f0ff;
+      }
+    }
+
+    > .events {
+      > table {
+        margin: 0;
+      }
+    }
+
+    > .relatives {
+
+      > .marriages {
+        .family {
+          padding: 5px;
+          margin: 5px;
+          border: 1px solid;
+          border-radius: 3px;
+        }
+        .spouse {
+          cursor: pointer;
+
+          &:hover {
+            background-color: #ddd;
+          }
+
+          .name {
+            font-weight: bold;
+            color: #555;
+            font-size: 1.2em;
+          }
+
+          .id {
+            margin: 5px;
+            font-variant: small-caps;
+            font-size: 1em;
+            font-weight: bolder;
+            color: #999;
+          }
+        }
+        .marriage {
+          .marriage_place {
+            margin: 10px;
+          }
+        }
+        .children td {
+          cursor: pointer;
+
+          table {
+            margin: 0;
+          }
+        }
+      }
+
+      .parents {
+        table {
+          margin: 0;
+          
+          td {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+

@@ -1,0 +1,224 @@
+
+#person-detail {
+  position: absolute;
+  bottom: -4px;
+  height: auto;
+  left: 0;
+  right: 0;
+  border: 2px solid #333;
+  box-sizing: border-box;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  display: none;
+
+  > div {
+    position: absolute;
+  }
+
+  > .header {
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 5px;
+
+    > .navbar-inner {
+      min-height: auto;
+      padding: 11px;
+
+      > * {
+        margin-right: 10px;
+      }
+
+      > .gen {
+        font-size: 1.3em;
+      }
+
+      > .name {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #777;
+      }
+
+      > .id {
+        font-size: .8em;
+        color: #bbb;
+      }
+
+      a.icon-edit, i.icon-refresh, i.icon-map-marker {
+        cursor: pointer;
+        border-radius: 3px;
+
+        &:hover {
+          background-color: #777;
+        }
+      }
+
+      > .links {
+        float: right;
+        margin-right: 0;
+
+        > * {
+          margin-left: 5px;
+        }
+      }
+
+      .close-btn {
+        display: inline-block;
+        cursor: pointer;
+        width: 18px;
+        text-align: center;
+        border: 1px solid;
+        border-radius: 4px;
+        height: 18px;
+        margin-right: 0;
+
+        &:hover {
+          color: red;
+        }
+      }
+    }
+  }
+
+  > .body {
+
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+
+    .clearfix {
+      clear: both;
+    }
+
+    > .left-side {
+      width: 50%;
+      float: left;
+
+      h3 {
+        margin-left: 5px;
+        margin-bottom: 5px;
+      }
+
+      > .events-listing {
+        // height: 150px;
+        // overflow: auto;
+        border: 1px solid #aaa;
+        margin: 5px;
+        padding: 5px;
+
+        table {
+          font-size: .8em;
+        }
+      }
+
+      > .parents-listing {
+        // height: 150px;
+        // overflow: auto;
+        border: 1px solid #aaa;
+        margin: 5px;
+        padding: 5px;
+
+        table {
+          tr {
+            cursor: pointer;
+          }
+        }
+      }
+
+      > .families-listing {
+        // position: absolute;
+        // top: 175px;
+        // bottom: 10px;
+        // left: 5px;
+        // right: 5px;
+        margin: 5px;
+        padding: 5px;
+        border: 1px solid #aaa;
+
+        > .body {
+          > .family {
+            border: 1px solid #aaa;
+            padding: 5px;
+            margin-bottom: 5px;
+
+            &.missing-marriage-date .marriage_date {
+              background-color: lightred;
+            }
+            &.missing-marriage-place .marriage_place {
+              background-color: lightred;
+            }
+            &.missing-spouse .spouse {
+              background-color: lightred;
+            }
+
+            .spouse {
+              cursor: pointer;
+
+              &:hover {
+                background-color: #f5f5f5;
+              }
+
+              .name {
+                font-weight: bold;
+                color: #777;
+              }
+            }
+
+            .spouse, .marriage {
+              span {
+                margin-right: 10px;
+              }
+
+              .id {
+                color: #aaa;
+                font-size: .8em;
+              }
+            }
+
+            .child {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+
+    > .right-side {
+      float: right;
+      width: 50%;
+
+      h3 {
+        margin-left: 5px;
+        margin-bottom: 5px;
+      }
+
+      > .alerts {
+        border: 1px solid #aaa;
+        margin: 5px;
+        padding: 5px;
+
+        div.alert {
+          margin-bottom: 5px;
+        }
+      }
+
+      .search-links {
+        border: 1px solid #aaa;
+        margin: 5px;
+        padding: 5px;
+
+        a {
+          display: block;
+          margin: 5px 20px;
+        }
+
+      }
+
+    }
+  }
+}
+
+

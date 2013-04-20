@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="/static/imgs/favicon.png">
+    <title>Google Maps JavaScript API v3 Example: Geocoding Simple</title>
+    <link href="/static/oneplace.css" rel="stylesheet">
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/jquery-ui.css" rel="stylesheet">
+    <script src="/static/js/libs/jquery-1.8.0.js"></script>
+    <script src="/static/js/libs/jquery-ui.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="/static/js/libs/oms.min.js"></script>
+    <script src="/static/js/libs/infobox.js"></script>
+    <script
+      src="static/js/libs/lodash.js"></script>
+    <script src="/static/backbone-min.js"></script>
+    <script src="/static/utils.js"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <a data-toggle="collapse" data-target=".nav-collapse" class="btn btn-navbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span></a>
+          <a href="#" class="brand"><span>FamilyFound</span></a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a>Home</a></li>
+              <li><a href="#about-modal" data-toggle="modal" rel="button">About</a></li>
+              <li><a href="https://bitbucket.org/jabapyth/familyfound/issues?status=new&amp;status=open" target="_blank">Issues</a></li>
+            </ul>
+          </div>
+          <a class="pull-right" id="user-name">Not Logged In</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="models">
+      <div id="about-modal" class="modal hide fade">
+        <div class="modal-header">
+          <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+          <h3>About FamilyFound</h3>
+        </div>
+        <div class="modal-body">
+          <p>
+            FamilyFound is all about helping you get inside your family tree -
+            see these people as real people.
+          </p><a href="https://bitbucket.org/jabapyth/familyfound/">
+            https://bitbucket.org/jabapyth/familyfound/
+            </a>
+        </div>
+      </div>
+      <div id="login-modal" class="modal hide fade">
+        <div class="modal-header">
+          <!--button data-dismiss="modal" class="close">&times;</button-->
+          <h3>Login through FamilySearch</h3>
+        </div>
+        <div class="modal-body">
+          <iframe></iframe>
+        </div>
+      </div>
+    </div>
+
+    <script name="tpl-event" type="text/tpl">
+      <div class="event">
+        <span>{ type }</span><br/>
+        <b>Place:</b> { place }<br/>
+        <b>Date:</b> { date }<br/>
+      </div>
+    </script>
+    <script name="tpl-child" type="text/tpl">
+      <div class="child">
+        <span>{ name }</span> : { date }
+      </div>
+    </script>
+
+    <div id="page-map" class="app-page">
+      <div id="main">
+        <div id="map_canvas"></div>
+        <div id="control-bar" class="navbar navbar-inverse">
+          <div class="navbar-inner">
+            <div class="meta">
+              <button id="play-it" class="btn btn-small">Play!</button>
+              <span class="year"></span>
+            </div>
+            <div id="time-slider"><div class="slider"></div></div>
+          </div>
+        </div>
+      </div>
+      <div id="right_bar">
+        <div id="controls">
+          <button class="btn lines" data-toggle="button">Lines</button>
+        </div>
+        <div id="info">
+          <h3 class="name"></h3>
+          <div class="events"></div>
+          <div class="children"></div>
+          <div class="pedigree"></div>
+        </div>
+      </div>
+      <div style="clear:both"></div>
+    </div>
+
+    <script>
+    var URLS = {
+      'check-login': '{% url_for "check-login" %}',
+      'get-pedigree': '{% url_for 'get-pedigree' %}',
+    };
+    </script>
+    <script src="/static/oneplace.js"> </script>
+  </body>
+</html>
+

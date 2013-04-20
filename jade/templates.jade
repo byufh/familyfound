@@ -1,0 +1,88 @@
+
+script(name='tpl-event', type='text/tpl')
+  .event
+    span { type }
+    b Place:
+    span { place }
+    br
+    b Date:
+    span { date }
+    br
+script(name='tpl-child', type='text/tpl')
+  .child
+    span { name }
+    span: { date }
+script(name='tpl-person', type='text/tpl')
+  .person(data-id='{ pid }')
+    .label.generation { gen }
+    .name { name }
+    .id { pid }
+    .dates
+      span.born { born }
+      span -
+      span.died { died }
+    .people-alerts.badge.badge-important Missing relatives { people_alerts }
+    .info-alerts.badge.badge-important Missing info { info_alerts }
+    .links
+      a.familysearch(href='https://familysearch.org/tree/#view=ancestor&person={ pid }', target='_blank') FS
+script(name='tpl-list', type='text/tpl')
+  div(data-id='{ id }').loading
+    span.title { name }
+    i.pull-right.icon-refresh
+
+script(name='detail-event', type='text/tpl')
+  tr.event
+    td { type }
+    td { age  }
+    td { date }
+    td { place }
+
+script(name='family-listing', type='text/tpl')
+  .family
+    .spouse(data-id='{ spouse_id }')
+      span.name { spouse_name }
+      span.id { spouse_id }
+      span.years { spouse_years }
+    .marriage
+      span.marriage_date Married { marriage_date }
+      span.marriage_place { marriage_place }
+    .children
+      table.table.table-condensed
+        tbody
+script(name='child-listing', type='text/tpl')
+  tr.child(data-id='{ id }')
+    td { name }
+    td { id }
+    td { years }
+script(name='parent-listing', type='text/tpl')
+  tr.parent(data-id='{ id }')
+    td.name { name }
+    td.id { id }
+    td.years { years }
+script(name='no-parents', type='text/tpl')
+  tr.parent
+    td.name No parents listed
+script(name='slider-year', type='text/tpl')
+  div.year-label(style='left:{ left }%') { year }
+script(name='map-ped-person', type='text/tpl')
+  .person-line(data-id="{ pid }")
+    .person(style='width: { width }%; left: { left }%;', title='{ name }')
+
+script(name='map-marker-info', type='text/tpl')
+  .info-box
+    .name { name }
+    .years { years } ({ gen })
+    .place { place }
+
+script(name='map-person-event', type='text/tpl')
+  .event
+    div
+      span.name { name }
+      span.years { years }
+    .place { place }
+
+script(name='research-button', type='text/tpl')
+  a.btn.btn-primary.btn-block(title='Research this person on { title }'
+                              href='{ href }'
+                              target='_blank') { title }
+

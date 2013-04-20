@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FamilyFound</title>
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="icon" type="image/png" href="/static/imgs/favicon.png">
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/jquery-ui.css" rel="stylesheet" media="screen">
+    <link href="/static/css/home.css" rel="stylesheet" media="screen">
+    <script src="/static/js/libs/jquery-1.8.0.js"></script>
+    <script src="/static/js/libs/jquery-ui.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/js/libs/lodash.js"></script>
+    <script src="/static/backbone-min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+    <script src="/static/js/libs/oms.min.js"></script>
+    <script src="/static/js/libs/infobox.js"></script>
+    <script src="/static/utils.js"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container"><a data-toggle="collapse" data-target=".nav-collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a href="#" class="brand">FamilyFound</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about-modal" data-toggle="modal" rel="button">About</a></li>
+              <li><a href="https://bitbucket.org/jabapyth/familyfound/issues?status=new&amp;status=open" target="_blank">Issues</a></li>
+            </ul>
+          </div><a id="user-name" class="pull-right">Not Logged In</a>
+        </div>
+      </div>
+    </div>
+    <div id="modals">
+      <div id="about-modal" class="modal hide fade">
+        <div class="modal-header">
+          <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+          <h3>About FamilyFound</h3>
+        </div>
+        <div class="modal-body">
+          <p>
+            FamilyFound is all about helping you get inside your family tree -
+            see these people as real people.
+          </p><a href="https://bitbucket.org/jabapyth/familyfound/">
+            https://bitbucket.org/jabapyth/familyfound/
+            </a>
+        </div>
+      </div>
+      <div id="login-modal" class="modal hide fade">
+        <div class="modal-header">
+          <h3>Login through FamilySearch.org</h3>
+        </div>
+        <div class="modal-body">
+          <iframe></iframe>
+        </div>
+      </div>
+    </div>
+    <div id="templates">
+      <script name="tpl-event" type="text/tpl">
+        <div class="event"><span>{ type }</span><b>Place:</b><span>{ place }</span><br><b>Date:</b><span>{ date }</span><br></div>
+      </script>
+      <script name="tpl-child" type="text/tpl">
+        <div class="child"><span>{ name }</span><span>: { date }</span></div>
+      </script>
+    </div>
+    <div id="body-contents" class="container-fluid">
+      <div id="page-map" class="app-page">
+        <div class="main">
+          <div class="map_canvas"></div>
+          <div class="control-bar navbar navbar-inverse">
+            <div class="navbar-inner">
+              <div class="meta">
+                <button id="play-it" class="btn btn-small">Play!</button><span class="year"></span>
+              </div>
+              <div class="time-slider">
+                <div class="slider"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right_bar">
+          <div class="controls">
+            <button data-toggle="button" class="btn lines">Lines</button>
+          </div>
+          <div class="info">
+            <h3 class="name"></h3>
+            <div class="events"></div>
+            <div class="children"></div>
+            <div class="pedigree"></div>
+          </div>
+        </div>
+      </div>
+      <div style="clear:both"></div>
+    </div>
+    <script src="/urls.js"></script>
+    <script>
+      var TEMPLATES = [
+        '/static/tpl/',
+        'event'
+      ];
+    </script>
+    <script src="/static/js/template_loader.js"></script>
+    <script src="/static/js/template_view.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/familyfound.js"></script>
+    <script src="/static/js/page-map.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/urls.js"></script>
+    <script>
+      var TEMPLATES = [
+        '/static/tpl/',
+        'event'
+      ];
+    </script>
+    <script src="/static/js/template_loader.js"></script>
+    <script src="/static/js/template_view.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/familyfound.js"></script>
+    <script src="/static/js/page-map.js"></script>
+    <script src="/static/js/main.js"></script>
+  </body>
+</html>

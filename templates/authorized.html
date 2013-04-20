@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Authorized!</title>
+  </head>
+  <body>
+    <h2>Authorization Successful</h2>
+    <script>
+      parent.app.done_oauth({{ user_info|safe }});
+    </script>
+  </body>
+</html>
+
